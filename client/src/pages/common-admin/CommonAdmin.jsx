@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { Link, Outlet, NavLink, useLocation } from "react-router-dom";
-import { Bell, Trophy, Settings, LogOut, Calendar, ChartColumn, User, Users, LayoutList, Menu, X } from "lucide-react";
+import { Bell, Trophy, Settings, LogOut, Calendar, ChartColumn, User, Users, LayoutList, Menu, X, Shield, Plus, Locate, LocationEdit } from "lucide-react";
 
 function SidebarNav({ isOpen }) {
     const Items = [
-        { title: 'Coach Dashboard', icon: User, link: '/coach/dashboard' },
-        { title: 'Manage Teams', icon: Users, link: '/coach/manage-teams' },
-        { title: 'Teams', icon: LayoutList, link: '/coach/teams' },
-        { title: 'Events', icon: Trophy, link: '/coach/events' },
-        { title: 'Matches', icon: Calendar, link: '/coach/matches' },
-        { title: 'Leaderboard', icon: ChartColumn, link: '/coach/leaderboard' },
+        { title: 'Dashboard', icon: Shield, link: '/common-admin/dashboard' },
+        { title: 'Audit Log', icon: Plus, link: '/common-admin/audit-log' },
+        { title: 'Teams', icon: LayoutList, link: '/common-admin/teams' },
+        { title: 'Events', icon: Trophy, link: '/common-admin/events' },
+        { title: 'Matches', icon: Calendar, link: '/common-admin/matches' },
+        { title: 'Leaderboard', icon: ChartColumn, link: '/common-admin/leaderboard' },
     ];
 
     const path = useLocation();
@@ -31,7 +31,7 @@ function SidebarNav({ isOpen }) {
     );
 }
 
-function Coach() {
+function CommonAdmin() {
     const [isOpen, setIsOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -41,7 +41,7 @@ function Coach() {
 
     return (
         <div className="flex flex-col min-h-screen">
-            <header className={`sticky top-0 z-30 bg-white border-b shadow-lg border-[#5184e3ff]`}>
+            <header className={`sticky top-0 z-30 bg-white border-b border-[#9191914d] border-[#5184e3ff]`}>
                 <div className={`flex items-center justify-between h-14 text-sm px-4`}>
                     <Link to="/">
                         <div className="flex items-center gap-2">
@@ -65,9 +65,9 @@ function Coach() {
                             {isDropdownOpen && (
                                 <div className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 z-10 py-1">
                                     <div className="px-4 py-2 border-b border-gray-100">
-                                        <p className="text-base font-medium text-gray-900">Team Coach</p>
-                                        <p className="text-sm text-gray-500">ccoach@insms.com</p>
-                                        <p className="text-xs text-gray-400">Coach • NIT Trichy</p>
+                                        <p className="text-base font-medium text-gray-900">Team CommonAdmin</p>
+                                        <p className="text-sm text-gray-500">cCommonAdmin@insms.com</p>
+                                        <p className="text-xs text-gray-400">CommonAdmin • common Trichy</p>
                                     </div>
                                     <button className="flex items-center w-full px-4 py-2 text-gray-700 hover:bg-gray-100 space-x-3">
                                         <Settings className="h-5 w-5" />
@@ -90,7 +90,7 @@ function Coach() {
             </header>
 
             <div className="flex min-h-screen bg-gray-50">
-                <aside className={`hidden md:block fixed h-screen left-0 z-20 flex flex-col gap-2 p-2 border-r border-[#9d9d9da4] bg-white shadow-sm ${isOpen ? 'w-52' : 'w-16'} transition-all duration-300 ease-in-out`} onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)} >
+                <aside className={`hidden md:block fixed h-screen left-0 z-20 flex flex-col gap-2 p-2 border-r border-[#9191914d] bg-white shadow-sm ${isOpen ? 'w-52' : 'w-16'} transition-all duration-300 ease-in-out`} onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)} >
                     <SidebarNav isOpen={isOpen} />
                 </aside>
                 <main className={`flex-1 md:ml-16 transition-all duration-300 ease-in-out min-w-0`} >
@@ -108,7 +108,7 @@ function Coach() {
                         <span className="text-lg font-bold text-gradient">INSMS</span>
                     </div>
                     <div className="text-center text-sm text-muted-foreground">
-                        <p>&copy; Inter-NIT Sports Management System</p>
+                        <p>&copy; Inter-common Sports Management System</p>
                     </div>
                 </div>
             </footer>
@@ -116,4 +116,4 @@ function Coach() {
     );
 }
 
-export default Coach;
+export default CommonAdmin;
